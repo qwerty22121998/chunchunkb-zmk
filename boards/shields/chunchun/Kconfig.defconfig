@@ -11,7 +11,7 @@ config ZMK_SPLIT_ROLE_CENTRAL
 
 endif
 
-if SHIELD_CHUNCHUN_LEFT || SHIELF_CHUNCHUN_RIGHT
+if SHIELD_CHUNCHUN_LEFT || SHIELD_CHUNCHUN_RIGHT
 
 config ZMK_SPLIT
     default y
@@ -25,7 +25,6 @@ if ZMK_DISPLAY
 
 config I2C
     default y
-
 
 config SSD1306
     default y

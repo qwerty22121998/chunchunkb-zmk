@@ -19,70 +19,70 @@
 #
 ---
 include:
-  # reset
-  - board: nice_nano_v2
-    shield: settings_reset
-    artifact-name: settings_reset
+    # reset
+    - board: nice_nano_v2
+      shield: settings_reset
+      artifact-name: settings_reset
 
-  # nice view
-  - board: nice_nano_v2
-    shield: sofle_left nice_view_adapter_rgb nice_epaper
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: central_left_nice_view
+    # nice view
+    - board: nice_nano_v2
+      shield: chunchun_left nice_view_adapter nice_epaper
+      snippet: studio-rpc-usb-uart
+      cmake-args: -DCONFIG_ZMK_STUDIO=y
+      artifact-name: central_left_nice_view
 
-  - board: nice_nano_v2
-    shield: sofle_left nice_view_adapter_rgb nice_epaper
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-    artifact-name: peripheral_left_nice_view
+    - board: nice_nano_v2
+      shield: chunchun_left nice_view_adapter nice_epaper
+      cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+      artifact-name: peripheral_left_nice_view
 
-  - board: nice_nano_v2
-    shield: sofle_left nice_view_adapter_rgb nice_view_anim
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n 
-    artifact-name: peripheral_left_nice_view_planet
+    - board: nice_nano_v2
+      shield: chunchun_left nice_view_adapter nice_view_anim
+      cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+      artifact-name: peripheral_left_nice_view_planet
 
-  - board: nice_nano_v2
-    shield: sofle_left nice_view_adapter_rgb nice_view_anim
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1
-    artifact-name: peripheral_left_nice_view_astronaut
+    - board: nice_nano_v2
+      shield: chunchun_left nice_view_adapter nice_view_anim
+      cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1
+      artifact-name: peripheral_left_nice_view_astronaut
 
-  - board: nice_nano_v2
-    shield: sofle_right nice_view_adapter_rgb nice_epaper
-    artifact-name: peripheral_right_nice_view
+    - board: nice_nano_v2
+      shield: chunchun_right nice_view_adapter nice_epaper
+      artifact-name: peripheral_right_nice_view
 
-  - board: nice_nano_v2
-    shield: sofle_right nice_view_adapter_rgb nice_view_anim 
-    artifact-name: peripheral_right_nice_view_planet
+    - board: nice_nano_v2
+      shield: chunchun_right nice_view_adapter nice_view_anim
+      artifact-name: peripheral_right_nice_view_planet
 
-  - board: nice_nano_v2
-    shield: sofle_right nice_view_adapter_rgb nice_view_anim
-    cmake-args: -DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1
-    artifact-name: peripheral_right_nice_view_astronaut
+    - board: nice_nano_v2
+      shield: chunchun_right nice_view_adapter nice_view_anim
+      cmake-args: -DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1
+      artifact-name: peripheral_right_nice_view_astronaut
 
-  # oled
-  - board: nice_nano_v2
-    shield: sofle_dongle dongle_display_091_oled
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: central_dongle_oled_091
+    # oled
+    - board: nice_nano_v2
+      shield: chunchun_dongle dongle_display_091_oled
+      snippet: studio-rpc-usb-uart
+      cmake-args: -DCONFIG_ZMK_STUDIO=y
+      artifact-name: central_dongle_oled_091
 
-  - board: nice_nano_v2
-    shield: sofle_dongle dongle_display
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: central_dongle_oled
+    - board: nice_nano_v2
+      shield: chunchun_dongle dongle_display
+      snippet: studio-rpc-usb-uart
+      cmake-args: -DCONFIG_ZMK_STUDIO=y
+      artifact-name: central_dongle_oled
 
-  - board: nice_nano_v2
-    shield: sofle_left nice_oled
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: central_left_oled
+    - board: nice_nano_v2
+      shield: chunchun_left nice_oled
+      snippet: studio-rpc-usb-uart
+      cmake-args: -DCONFIG_ZMK_STUDIO=y
+      artifact-name: central_left_oled
 
-  - board: nice_nano_v2
-    shield: sofle_left nice_oled
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-    artifact-name: peripheral_left_oled 
+    - board: nice_nano_v2
+      shield: chunchun_left nice_oled
+      cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+      artifact-name: peripheral_left_oled
 
-  - board: nice_nano_v2
-    shield: sofle_right nice_oled
-    artifact-name: peripheral_right_oled
+    - board: nice_nano_v2
+      shield: chunchun_right nice_oled
+      artifact-name: peripheral_right_oled

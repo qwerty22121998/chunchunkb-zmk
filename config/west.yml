@@ -1,0 +1,31 @@
+manifest:
+    remotes:
+        - name: zmkfirmware
+          url-base: https://github.com/zmkfirmware
+        - name: mctechnology17
+          url-base: https://github.com/mctechnology17
+        - name: GarrettFaucher
+          url-base: https://github.com/GarrettFaucher
+        - name: englmaxi
+          url-base: https://github.com/englmaxi
+        - name: qwerty22121998
+          url-base: https://github.com/qwerty22121998
+    projects:
+        - name: zmk
+          remote: zmkfirmware
+          revision: v0.3
+          import: app/west.yml
+        - name: zmk-nice-oled
+          remote: mctechnology17
+          revision: main
+        - name: zmk-dongle-display-091-oled
+          remote: GarrettFaucher
+          revision: main
+        - name: zmk-dongle-display
+          remote: englmaxi
+          revision: main
+        - name: nice-view-anim
+          remote: qwerty22121998
+          revision: main
+    self:
+        path: config

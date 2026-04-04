@@ -1,6 +1,5 @@
 #include "chunchun.dtsi"
 
-
 &left_encoder {
     status = "okay";
 };

@@ -7,8 +7,8 @@ source .venv/bin/activate
 cd app
 EXTRA_MODULES="$CUR"
 EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-nice-oled"
-# EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display-091-oled"
-# EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display"
+EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display-091-oled"
+EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display"
 EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/nice-view-anim"
 
 function build_reset() {
@@ -42,19 +42,21 @@ function build_peripheral() {
 build_reset
 
 # nice view
+# left
 build_central left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter nice_epaper" &
-# build_peripheral left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter_rgb nice_epaper" &
-# build_peripheral left-nice-view-planet nice_nano_v2 "chunchun_left nice_view_adapter_rgb nice_view_anim" &
-# build_peripheral left-nice-view-astronaut nice_nano_v2 "chunchun_left nice_view_adapter_rgb nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
+build_peripheral left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter nice_epaper" &
+build_peripheral left-nice-view-planet nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" &
+build_peripheral left-nice-view-astronaut nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
+# right
 build_peripheral right-nice-view nice_nano_v2 "chunchun_right nice_view_adapter nice_epaper" &
-# build_peripheral right-nice-view-planet nice_nano_v2 "chunchun_right nice_view_adapter_rgb nice_view_anim" &
-# build_peripheral right-nice-view-astronaut nice_nano_v2 "chunchun_right nice_view_adapter_rgb nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
+build_peripheral right-nice-view-planet nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" &
+build_peripheral right-nice-view-astronaut nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
 wait
 
 # # oled
-# # build_central dongle-oled-091 nice_nano_v2 "chunchun_dongle dongle_display_091_oled" &
-# # build_central dongle-oled nice_nano_v2 "chunchun_dongle dongle_display" &
-# build_central left-oled nice_nano_v2 "chunchun_left nice_oled" &
-# build_peripheral left-oled nice_nano_v2 "chunchun_left nice_oled" &
-# build_peripheral right-oled nice_nano_v2 "chunchun_right nice_oled" &
-# wait
+# build_central dongle-oled-091 nice_nano_v2 "chunchun_dongle dongle_display_091_oled" &
+# build_central dongle-oled nice_nano_v2 "chunchun_dongle dongle_display" &
+build_central left-oled nice_nano_v2 "chunchun_left nice_oled" &
+build_peripheral left-oled nice_nano_v2 "chunchun_left nice_oled" &
+build_peripheral right-oled nice_nano_v2 "chunchun_right nice_oled" &
+wait
