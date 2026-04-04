@@ -1,0 +1,16 @@
+file_format: "1"
+id: chunchun
+name: ChunChun
+type: shield
+url: https://github.com/qwerty22121998/chunchunkb
+requires: [ pro_micro ]
+exposes: [ i2c_oled ]
+features:
+    - keys
+    - display
+    - encoder
+    - underglow
+    - studio
+siblings:
+    - chunchun_left
+    - chunchun_right

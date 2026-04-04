@@ -1,0 +1,5 @@
+**/*.Identifier
+*.uf2
+.vscode
+dep/*
+*.log
