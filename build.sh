@@ -1,15 +1,48 @@
 #!/bin/zsh
 set -e
+
+# Default values for arguments
+EXTRA_MODULES=""
+USB_DEBUG=0
+ZMK_ROOT=""
+
+usage() {
+    echo "Usage: $0 [-e|--extra-modules EXTRA_MODULES] [-u|--usb-debug] [-r|--root ZMK_ROOT]" >&2
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -e|--extra-modules) EXTRA_MODULES="$2"; shift 2 ;;
+        -u|--usb-debug) USB_DEBUG=1; shift ;;
+        -r|--root) ZMK_ROOT="$2"; shift 2 ;;
+        *) usage; exit 1 ;;
+    esac
+done
+
+# Ensure ZMK_ROOT is set
+if [ -z "$ZMK_ROOT" ]; then
+    echo "Error: ZMK_ROOT must be specified using the -r or --root option." >&2
+    usage
+    exit 1
+fi
+
 CUR=$(pwd)
 rm -f *.uf2 || :
 cd $ZMK_ROOT
 source .venv/bin/activate
 cd app
-EXTRA_MODULES="$CUR"
-EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-nice-oled"
-EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display-091-oled"
-EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display"
-EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/nice-view-anim"
+
+# Append default EXTRA_MODULES paths if not provided
+if [ -z "$EXTRA_MODULES" ]; then
+    EXTRA_MODULES="$CUR"
+    EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-nice-oled"
+    EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display-091-oled"
+    EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/zmk-dongle-display"
+    EXTRA_MODULES="$EXTRA_MODULES;$CUR/dep/nice-view-anim"
+fi
+
+export USB_DEBUG
 
 function build_reset() {
     echo "Building reset..."
@@ -23,7 +56,14 @@ function build_central() {
     BOARD=$2
     SHIELD=$3
     echo "Building central $NAME..."
-    west build -p -d build/central-$NAME -b $BOARD -S studio-rpc-usb-uart -- -DSHIELD="$SHIELD" \
+
+    # Conditionally add -S zmk-usb-logging if USB_DEBUG=1
+    USB_DEBUG_FLAG=""
+    if [ "$USB_DEBUG" -eq 1 ]; then
+        USB_DEBUG_FLAG="-S zmk-usb-logging"
+    fi
+
+    west build -p -d build/central-$NAME -b $BOARD -S studio-rpc-usb-uart $USB_DEBUG_FLAG -- -DSHIELD="$SHIELD" \
         -DZMK_CONFIG=$CUR/config -DCONFIG_ZMK_STUDIO=y -DZMK_EXTRA_MODULES=$EXTRA_MODULES
     cp build/central-$NAME/zephyr/zmk.uf2 $CUR/central-$NAME.uf2
 }
@@ -38,6 +78,7 @@ function build_peripheral() {
         -DZMK_CONFIG=$CUR/config -DZMK_EXTRA_MODULES=$EXTRA_MODULES -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     cp build/peripheral-$NAME/zephyr/zmk.uf2 $CUR/peripheral-$NAME.uf2
 }
+
 # reset
 build_reset
 
