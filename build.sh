@@ -28,6 +28,7 @@ if [ -z "$ZMK_ROOT" ]; then
 fi
 
 CUR=$(pwd)
+
 rm -f *.uf2 || :
 cd $ZMK_ROOT
 source .venv/bin/activate
@@ -80,24 +81,24 @@ function build_peripheral() {
 }
 
 # reset
-build_reset
+# build_reset
 
 # nice view
 # left
-build_central left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter nice_epaper" &
-build_peripheral left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter nice_epaper" &
-build_peripheral left-nice-view-planet nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" &
-build_peripheral left-nice-view-astronaut nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
+build_central left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter_rgb nice_epaper" &
+# build_peripheral left-nice-view nice_nano_v2 "chunchun_left nice_view_adapter nice_epaper" &
+# build_peripheral left-nice-view-planet nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" &
+# build_peripheral left-nice-view-astronaut nice_nano_v2 "chunchun_left nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
 # right
-build_peripheral right-nice-view nice_nano_v2 "chunchun_right nice_view_adapter nice_epaper" &
-build_peripheral right-nice-view-planet nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" &
-build_peripheral right-nice-view-astronaut nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
+# build_peripheral right-nice-view nice_nano_v2 "chunchun_right nice_view_adapter nice_epaper" &
+# build_peripheral right-nice-view-planet nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" &
+# build_peripheral right-nice-view-astronaut nice_nano_v2 "chunchun_right nice_view_adapter nice_view_anim" "-DCONFIG_ZMK_NICE_VIEW_ANIM_VARIANT=1" &
 wait
 
 # # oled
 # build_central dongle-oled-091 nice_nano_v2 "chunchun_dongle dongle_display_091_oled" &
 # build_central dongle-oled nice_nano_v2 "chunchun_dongle dongle_display" &
-build_central left-oled nice_nano_v2 "chunchun_left nice_oled" &
-build_peripheral left-oled nice_nano_v2 "chunchun_left nice_oled" &
-build_peripheral right-oled nice_nano_v2 "chunchun_right nice_oled" &
-wait
+# build_central left-oled nice_nano_v2 "chunchun_left nice_oled" &
+# build_peripheral left-oled nice_nano_v2 "chunchun_left nice_oled" &
+# build_peripheral right-oled nice_nano_v2 "chunchun_right nice_oled" &
+# wait
