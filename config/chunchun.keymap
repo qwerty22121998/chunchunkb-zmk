@@ -8,21 +8,18 @@
     behaviors {
         ug_hue: ug_hue {
             compatible = "zmk,behavior-sensor-rotate";
-            label = "UG_HUE";
             #sensor-binding-cells = <0>;
             bindings = <&rgb_ug RGB_HUI>, <&rgb_ug RGB_HUD>;
         };
 
         ug_sat: ug_sat {
             compatible = "zmk,behavior-sensor-rotate";
-            label = "UG_SAT";
             #sensor-binding-cells = <0>;
             bindings = <&rgb_ug RGB_SAI>, <&rgb_ug RGB_SAD>;
         };
 
         ug_bright: ug_bright {
             compatible = "zmk,behavior-sensor-rotate";
-            label = "UG_BRIGHT";
             #sensor-binding-cells = <0>;
             bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
         };
@@ -30,7 +27,6 @@
         // Hold for layer 2, double tap to lock the fn layer
         raise_fn: raise_fn {
             compatible = "zmk,behavior-tap-dance";
-            label = "RAISE_FN";
             #binding-cells = <0>;
             bindings = <&mo 2>, <&tog 3>;
             tapping-term-ms = <200>;
@@ -39,7 +35,6 @@
         // Switch output to Bluetooth, then pick the profile; plain BT_SEL stays on USB while plugged in
         bt_sel: bt_sel {
             compatible = "zmk,behavior-macro-one-param";
-            label = "BT_SEL";
             #binding-cells = <1>;
             bindings = <&out OUT_BLE>, <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
         };
@@ -72,10 +67,6 @@
 &trans  &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans  &trans     &trans  &trans    &trans  &trans
                 &kp LGUI  &trans  &kp LCTRL  &trans  &trans  &trans  &trans  &kp RCTRL  &trans  &kp RGUI
             >;
-
-            sensor-bindings =
-                <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>,
-                <&inc_dec_kp PG_DN PG_UP>;
         };
 
         shift {
