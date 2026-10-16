@@ -15,17 +15,18 @@ manifest:
           remote: zmkfirmware
           revision: v0.3
           import: app/west.yml
+        # Modules pinned to SHAs: their main branches move to newer ZMK/Zephyr and break v0.3 builds
         - name: zmk-nice-oled
           remote: mctechnology17
-          revision: main
+          revision: 46f824abb2bd41f1287c5c68abd14122af6042a3
         - name: zmk-dongle-display-091-oled
           remote: GarrettFaucher
-          revision: main
+          revision: 0e718425387b3d1e5df8bcb95bc9813b20f11af4
         - name: zmk-dongle-display
           remote: englmaxi
-          revision: main
+          revision: c6c4be11c5ede722086a2a1f355cec9c101b9390 # last commit before Zephyr 4.1 / LVGL 9 port
         - name: nice-view-anim
           remote: qwerty22121998
-          revision: main
+          revision: 242a61641ab2393719b614413710724e27cb44c0
     self:
         path: config
