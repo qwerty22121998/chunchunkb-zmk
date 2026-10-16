@@ -16,10 +16,6 @@ if SHIELD_CHUNCHUN_LEFT || SHIELD_CHUNCHUN_RIGHT
 config ZMK_SPLIT
     default y
 
-config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
-    default 2
-
-
 if ZMK_DISPLAY
 
 
