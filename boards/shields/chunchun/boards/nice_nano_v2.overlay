@@ -31,7 +31,7 @@
         spi-max-frequency = <4000000>;
 
         /* WS2812 */
-        chain-length = <35>; /* SK6812MINI-E per side */
+        chain-length = <36>; /* SK6812MINI-E per side; LED36 under the encoder is optional (chain tail, data just falls off when absent) */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
 
